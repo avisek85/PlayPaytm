@@ -7,6 +7,8 @@ import {useNavigate} from "react-router-dom"
 
 function SendMoney() {
   const apiUrl = import.meta.env.VITE_API_URL;
+  console.log("API URL in sendmoney:", apiUrl);
+
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
   const name = searchParams.get("name");

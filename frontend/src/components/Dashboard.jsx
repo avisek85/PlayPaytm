@@ -11,6 +11,8 @@ function Dashboard() {
   const [balance, setBalance] = useState("");
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
+  console.log("API URL in dashboard:", apiUrl);
+
 
   useEffect(() => {
     if (!localStorage.getItem(`token`)) {
