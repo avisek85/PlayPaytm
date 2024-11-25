@@ -8,6 +8,7 @@ function Signin() {
   const [password, setPassword] = useState("");
   const [message,setMessage] = useState("");
   const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL;
 
 
   const onSignin = async()=>{
@@ -22,7 +23,7 @@ function Signin() {
     }
 
    try {
-    await axios.post("http://localhost:3000/api/v1/user/signin", {
+    await axios.post(`${apiUrl}/api/v1/user/signin`, {
       username,
       password,
     })

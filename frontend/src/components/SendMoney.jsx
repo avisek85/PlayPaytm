@@ -22,7 +22,7 @@ function SendMoney() {
     if(Number(amount) > Number(balance)){
       return setMessage("Balance is not enough.")
     }
-   await axios.post("http://localhost:3000/api/v1/account/transfer",{
+   await axios.post(`${apiUrl}/api/v1/account/transfer`,{
       to:id,
       amount,
     },{

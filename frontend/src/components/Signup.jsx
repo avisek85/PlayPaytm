@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function Signup() {
   const [firstName, setFirstName] = useState("john");
@@ -22,7 +23,7 @@ return;
    }
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/user/signup",
+        `${apiUrl}/api/v1/user/signup`,
         {
           username,
           firstName,

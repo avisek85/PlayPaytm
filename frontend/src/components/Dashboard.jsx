@@ -10,6 +10,7 @@ function Dashboard() {
   const [id, setId] = useState("");
   const [balance, setBalance] = useState("");
   const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (!localStorage.getItem(`token`)) {
@@ -19,7 +20,7 @@ function Dashboard() {
 
   const fetchFilterUser = async (filter) => {
     await axios
-      .get("http://localhost:3000/api/v1/user/bulk?filter=" + filter)
+      .get(`${apiUrl}/api/v1/user/bulk?filter=` + filter)
       .then((response) => {
         setUsers(response.data.user);
       });
@@ -33,7 +34,7 @@ function Dashboard() {
 
   const fetchCurrentUser = async () => {
     await axios
-      .post("http://localhost:3000/api/v1/user/me", {
+      .post(`${apiUrl}/api/v1/user/me`, {
         userId: localStorage.getItem("userId"),
       })
       .then((response) => {
@@ -51,7 +52,7 @@ function Dashboard() {
 
   const fetchBalance = async () => {
     await axios
-      .post("http://localhost:3000/api/v1/user/balance", {
+      .post(`${apiUrl}/api/v1/user/balance`, {
         userId: localStorage.getItem("userId"),
       })
       .then((response) => {
