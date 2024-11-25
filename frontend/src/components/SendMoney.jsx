@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom"
 
 function SendMoney() {
   const apiUrl = import.meta.env.VITE_API_URL;
-  console.log("API URL in sendmoney:", apiUrl);
+  // console.log("API URL in sendmoney:", apiUrl);
 
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
@@ -27,6 +27,7 @@ function SendMoney() {
     if(Number(amount) > Number(balance)){
       return setMessage("Balance is not enough.")
     }
+    setMessage("working...");
    await axios.post(`${apiUrl}/api/v1/account/transfer`,{
       to:id,
       amount,
@@ -34,7 +35,8 @@ function SendMoney() {
       headers:{
         Authorization:"Bearer "+localStorage.getItem("token")
       }
-    })
+    });
+    setMessage("");
     navigate("/");
   }
 
